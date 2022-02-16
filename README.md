@@ -9,7 +9,7 @@ Small air monitor with CO2, temperature and humidity sensors.
 - **schemes** - wiring schemes
 
 ## Schemes
-![SCHEME](https://github.com/kashtan404/Airmonitor/blob/master/schemes/scheme01.png)
+![SCHEME](https://github.com/kashtan404/Airmonitor/blob/main/schemes/scheme01.png)
 
 ## Components
 - Arduino NANO https://aliexpress.ru/item/4000587268145.html
