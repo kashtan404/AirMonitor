@@ -30,7 +30,7 @@ Misc:
 * [Adafruit_Sensor](https://github.com/adafruit/Adafruit_Sensor)
 * [MHZ19_uart](https://github.com/piot-jp-Team/mhz19_uart)
 * [LiquidCrystal_I2C](https://github.com/johnrickman/LiquidCrystal_I2C)
-* [GyverTimer](https://github.com/GyverLibs/GyverTimer)
+* [TimerMs](https://github.com/GyverLibs/TimerMs)
 
 
 ## Variables

@@ -24,11 +24,11 @@ Adafruit_AHTX0 aht;
 MHZ19_uart mhz19;
 
 // timers
-#include <GyverTimer.h>
-GTimer sensorsTimer(MS, SENS_TIME);
-GTimer drawSensorsTimer(MS, SENS_TIME);
-GTimer brightTimer(MS, 2000);
-GTimer co2LEDTimer(MS, 2000);
+#include <TimerMs.h>
+TimerMs sensorsTimer(SENS_TIME, 1, 0);
+TimerMs drawSensorsTimer(SENS_TIME, 1, 0);
+TimerMs brightTimer(2000, 1, 0);
+TimerMs co2LEDTimer(2000, 1, 0);
 
 // output vars
 float dispTemp;
@@ -90,9 +90,9 @@ void setup() {
 }
 
 void loop() {
-  if (brightTimer.isReady()) checkBrightness();
-  if (sensorsTimer.isReady()) readSensors();
-  if (drawSensorsTimer.isReady()) drawSensors();
+  if (brightTimer.tick()) checkBrightness();
+  if (sensorsTimer.tick()) readSensors();
+  if (drawSensorsTimer.tick()) drawSensors();
 
   if (dispCO2 < 700) {
     co2LEDTimer.stop();
@@ -105,8 +105,8 @@ void loop() {
     else if (dispCO2 >= 1500) interval = 300;
     if (previousInterval != interval) {
       previousInterval = interval;
-      co2LEDTimer.setInterval(interval);
+      co2LEDTimer.setTime(interval);
     }
-    if (co2LEDTimer.isReady()) digitalWrite(LED, !(digitalRead(LED)));
+    if (co2LEDTimer.tick()) digitalWrite(LED, !(digitalRead(LED)));
   }
 }
